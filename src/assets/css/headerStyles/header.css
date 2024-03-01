@@ -1,0 +1,50 @@
+.header{
+    height: 7%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.header h1{
+    margin: 0;
+}
+
+.logoContainer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8%; 
+    min-width: 75px;
+}
+
+.logo{
+    height: 100%;
+    margin-left: 1.1%;
+}
+.userInfoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 1.1%;
+    width: 92%;
+    height: 100%;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+.userInfoContainer i{
+    font-size: 1.5em;
+}
+.userInfoContainer i:hover{
+    cursor: pointer;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 15%;
+    min-width: 70px;
+    height: 100%;
+}
