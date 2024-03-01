@@ -10,7 +10,7 @@
     width: 100%;
 }
 .dark{
-    background-color: #40404C;
+    background-color: #352548;
     color: #FAFAFA;
 }
 .dark h1{
@@ -23,7 +23,6 @@
     color: rgb(139, 138, 138);
 }
 .dark .container main{
-    background-color: #2700426b;
 }
 .dark nav{
     background-color: #2A2B34;

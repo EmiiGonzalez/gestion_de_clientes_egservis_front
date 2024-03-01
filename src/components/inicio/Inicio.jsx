@@ -1,13 +1,9 @@
-import { useEffect, useState, createRef } from "react";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import "../../assets/css/main/inicio.css";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const arrayWords = ["emiliano", "matias", "gonzalez", "nina"];
 export const Inicio = () => {
-  const [count, setCount] = useState(0);
-  const [paragraph, setParagraph] = useState("");
   const [count2, setCount2] = useState(0);
-  const nodeRef = createRef(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setCount2((currentValue) =>
@@ -19,20 +15,13 @@ export const Inicio = () => {
   }, []);
 
   return (
-    <main>
-      <SwitchTransition>
-        <CSSTransition 
-          nodeRef={nodeRef}
-          classNames="fade"
-          key={arrayWords[count2]}
-          timeout={300}
-          addEndListener={(done) => {
-            nodeRef.current.addEventListener("transitionend", done, false);
-          }}
-        >
-          <h1 ref={nodeRef}>{arrayWords[count2]}</h1>
-        </CSSTransition>
-      </SwitchTransition>
-    </main>
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <h1>{arrayWords[count2]}</h1>
+    </motion.main>
   );
 };
