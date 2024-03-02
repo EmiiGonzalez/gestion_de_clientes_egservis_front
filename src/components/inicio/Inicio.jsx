@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+
 const arrayWords = ["emiliano", "matias", "gonzalez", "nina"];
 export const Inicio = () => {
   const [count2, setCount2] = useState(0);
@@ -13,6 +14,7 @@ export const Inicio = () => {
 
     return () => clearInterval(interval);
   }, []);
+
 
   return (
     <motion.main

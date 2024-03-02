@@ -4,7 +4,7 @@ import { Clientes } from "./clientes/Clientes";
 import { Dispositivos } from "./dispositivos/Dispositivos";
 import { Pedidos } from "./pedidos/Pedidos";
 import { AnimatePresence } from "framer-motion";
-import '../assets/css/main/main.css';
+import "../assets/css/main/main.css";
 
 /*
   Rutas de la aplicacion
@@ -13,13 +13,14 @@ import '../assets/css/main/main.css';
 export const AnimatedRoutes = () => {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/clientes" element={<Clientes />} />
-        <Route path="/dispositivos" element={<Dispositivos />} />
-        <Route path="/pedidos" element={<Pedidos />} />
-      </Routes>
-    </AnimatePresence>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/clientes" element={<Clientes />} />
+          <Route path="/dispositivos" element={<Dispositivos />} />
+          <Route path="/pedidos" element={<Pedidos />} />
+        </Routes>
+      </AnimatePresence>
+
   );
 };
