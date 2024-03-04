@@ -1,0 +1,112 @@
+.login_form_animation{
+    position: absolute;
+    content: '';
+    background-color: #0c1022;
+    border-radius: 50px 0;
+    inset:  5px;
+    padding: 50px 40px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login_form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.login_form_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;    
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.label_login{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.input_login{
+    width: 95%;
+    height: 2.5rem;
+    background: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0 2.5%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input_login:focus{
+    border: #347cf8 1px solid;
+    box-shadow: 0 0 10px #347cf8;
+    transition: all 0.3s ease;
+    
+}
+
+.login_form_button{
+    width: 95%;
+    height: 2.5rem;
+    background: #347cf8;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login_form_button:hover{
+    background-color: #0c1022;
+    color: #347cf8;
+    border: #347cf8 1px solid;
+    box-shadow: 0 0 10px #347cf8;
+}
+
+.login_input_error{
+    border: #FF0000 1px solid;
+}
+
+.login_input_success{
+    border: #00FF00 1px solid;
+}
+
+.login-error{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 16px;
+    color: #FF0000;
+    width: 100%;
+}

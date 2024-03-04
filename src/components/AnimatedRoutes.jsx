@@ -19,7 +19,7 @@ export const AnimatedRoutes = ({ setHandleTheme, theme }) => {
   return (
     <>
     {location.pathname !== "/login" && <Header /> }
-    <div className="container">
+    <div className={location.pathname ==="/login" ? "login-container" : "container"}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
         //rutas privadas
