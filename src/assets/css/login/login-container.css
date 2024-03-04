@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     letter-spacing: 1px;
-    background-color: #0c1022;
+    background:no-repeat center/cover url("../../images/login_background.jpg");
 }
 
 .login_form_container{

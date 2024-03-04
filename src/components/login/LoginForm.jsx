@@ -3,6 +3,7 @@ import { useState } from "react";
 import { InputLogin } from "./InputLogin";
 import { inputTypesArray } from "../helpers/inputsTypes";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 export const LoginForm = () => {
   const {
@@ -11,6 +12,9 @@ export const LoginForm = () => {
     trigger,
     formState: { errors },
   } = useForm();
+
+  const location = useLocation();
+  const arrayInputs = inputTypesArray(location.pathname);
 
   const [data, setData] = useState({
     login: "",
@@ -27,9 +31,10 @@ export const LoginForm = () => {
       animate={{ opacity: 1 ,x: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }} 
     >
-      {inputTypesArray.map((type) => {
+      {arrayInputs.map((type) => {
         return (
           <InputLogin
+            route={location.pathname}
             register={register}
             errors={errors}
             trigger={trigger}

@@ -1,4 +1,4 @@
-export const inputTypes = {
+const inputTypesForRegister = {
   login: {
     name: "login",
     type: "text",
@@ -32,4 +32,54 @@ export const inputTypes = {
   }
 };
 
-export const inputTypesArray = Object.values(inputTypes).map((type) => type.name);
+const inputTypesForLogin = {
+  login: {
+    name: "login",
+    type: "text",
+    label: "Usuario",
+    validations: {
+      required: {
+        value: true,
+        message: "El usuario es requerido",
+      },
+      pattern: {
+        message: "El usuario no puede estar vacío",
+        value: /^.{1,25}$/,
+      }
+    }
+  },
+  clave: {
+    name: "clave",
+    type: "password",
+    label: "Clave",
+    validations: {
+      required: {
+        value: true,
+        message: "La clave es requerida",
+      },
+      pattern: {
+        value: /^.{1,25}$/,
+        message: "La clave no puede estar vacia"
+      }
+    }
+  }
+}
+
+export const inputTypes = (route) => {
+  if (route === "/register") {
+    return inputTypesForRegister;
+  }
+  if (route === "/login") {
+    return inputTypesForLogin;
+  }
+  throw new Error("Route not found");
+}
+
+export const inputTypesArray = (route) => {
+  if (route === "/register") {
+    return Object.values(inputTypesForRegister).map((type) => type.name);
+  }
+  if (route === "/login") {
+    return Object.values(inputTypesForLogin).map((type) => type.name);
+  }
+};
