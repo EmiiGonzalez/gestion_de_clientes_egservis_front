@@ -38,7 +38,7 @@ export const InputLogin = ({
         {...register(type, inputType[type].validations)}
         id={type}
         type={inputType[type].type}
-        placeholder="Ingresa tu usuario"
+        placeholder={inputType[type].placeholder}
         onBlur={handleInputChange}
         className={`${classInput} input_login`}
       />

@@ -13,6 +13,7 @@ const inputTypesForRegister = {
         message: "El usuario debe tener entre 5 y 20 caracteres",
       },
     },
+    placeholder: "Ingrese su nómbre de usuario aquí",
   },
 
   clave: {
@@ -28,7 +29,9 @@ const inputTypesForRegister = {
          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,20}$/,
          message: "La clave debe tener entre 5 y 20 caracteres, al menos una mayúscula, una minúscula y un número",
       }
-    }
+    },
+    placeholder: "Ingrese su clave aquí",
+
   }
 };
 
@@ -46,7 +49,8 @@ const inputTypesForLogin = {
         message: "El usuario no puede estar vacío",
         value: /^.{1,25}$/,
       }
-    }
+    },
+    placeholder: "Ingresar usuario aquí",
   },
   clave: {
     name: "clave",
@@ -61,7 +65,9 @@ const inputTypesForLogin = {
         value: /^.{1,25}$/,
         message: "La clave no puede estar vacia"
       }
-    }
+    },
+    placeholder: "Ingresar clave aquí",
+
   }
 }
 
