@@ -16,13 +16,9 @@ function App() {
 
   return (
     <>
-      <Header />
-      <div className="container">
-        <Router>
-          <NavBar setHandleTheme={setHandleTheme} theme={theme} />
-          <AnimatedRoutes />
-        </Router>
-      </div>
+      <Router>
+          <AnimatedRoutes setHandleTheme={setHandleTheme} theme={theme} />
+      </Router>
     </>
   );
 }
