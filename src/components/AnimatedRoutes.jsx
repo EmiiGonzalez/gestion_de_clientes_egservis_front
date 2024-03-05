@@ -18,8 +18,8 @@ export const AnimatedRoutes = ({ setHandleTheme, theme }) => {
   const location = useLocation();
   return (
     <>
-    {location.pathname !== "/login" && <Header /> }
-    <div className={location.pathname ==="/login" ? "login-container" : "container"}>
+    {(location.pathname !== "/login" && location.pathname !== "/register")  && <Header /> }
+    <div className={location.pathname ==="/login" || location.pathname ==="/register" ? "login-container" : "container"}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
         //rutas privadas
@@ -31,9 +31,11 @@ export const AnimatedRoutes = ({ setHandleTheme, theme }) => {
             <Route path="clientes" element={<Clientes />} />
             <Route path="dispositivos" element={<Dispositivos />} />
             <Route path="pedidos" element={<Pedidos />} />
+            <Route path="*" element={<Inicio />} />
           </Route>
           //rutas publicas
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Login />} />
         </Routes>
       </AnimatePresence>
     </div>
