@@ -4,8 +4,7 @@ import { LoginForm } from './LoginForm';
 import { motion } from 'framer-motion'
 import { useLocation } from "react-router-dom";
 
-
-export const Login = () => {
+export const Login = ({setToken, url}) => {
 
   const location = useLocation();
 
@@ -22,7 +21,7 @@ export const Login = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         >{titulo[location.pathname]}</motion.h2>
-        <LoginForm />
+        <LoginForm setToken={setToken} url={url}/>
       </div>
     </div>
   )

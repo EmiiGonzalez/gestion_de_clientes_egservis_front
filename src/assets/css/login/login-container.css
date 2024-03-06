@@ -6,6 +6,7 @@
     align-items: center;
     letter-spacing: 1px;
     background:no-repeat center/cover url("../../images/login_background.jpg");
+    transition: background-image 0.5s ease-in-out;
 }
 
 .login_form_container{

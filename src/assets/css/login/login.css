@@ -29,6 +29,7 @@
     line-height: 28px;
     color: #FFFFFF;
     margin-bottom: 20px;
+    animation: updown 5s infinite;
 }
 
 .form-group{
@@ -113,4 +114,51 @@
 
 .login_label_error{
     color: #FF0000;
+}
+.login-error-container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 100%;
+    animation: error 1.5s infinite;
+}
+.login-error-p{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 16px;
+    color: #FF0000;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.icon-error-login{
+    margin-right: 10px;
+    color: #FF0000 !important;
+    font-size: 1.2rem;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes error {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }

@@ -3,9 +3,10 @@ import { useState } from "react";
 import { InputLogin } from "./InputLogin";
 import { inputTypesArray } from "../helpers/inputsTypes";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export const LoginForm = () => {
+export const LoginForm = ({ setToken, url }) => {
   const {
     register,
     handleSubmit,
@@ -14,6 +15,7 @@ export const LoginForm = () => {
   } = useForm();
 
   const location = useLocation();
+  const navigate = useNavigate();
   const arrayInputs = inputTypesArray(location.pathname);
 
   const [data, setData] = useState({
@@ -21,15 +23,26 @@ export const LoginForm = () => {
     clave: "",
   });
 
-  const onSubmit = (data) => console.log(data);
+  const [credentialFail, setCredentialFail] = useState(false);
+
+  const onSubmit = async () => {
+    try {
+      const response = await axios.post(`${url}auth/login`, data);
+      setToken({ jwt: response.data.token, autorizado: true });
+    } catch (error) {
+      if (error.response.status === 401) {
+        setCredentialFail(true);
+      }
+    }
+  };
 
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
       className="login_form"
       initial={{ opacity: 0.5, x: -20 }}
-      animate={{ opacity: 1 ,x: 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }} 
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       {arrayInputs.map((type) => {
         return (
@@ -45,6 +58,13 @@ export const LoginForm = () => {
           />
         );
       })}
+      {credentialFail && (
+        <motion.div className="login-error-container"
+        {...{ initial: { opacity: 0 }, animate: { opacity: 1 } }}>
+          <i className="bi bi-exclamation-circle icon-error-login" ></i>
+          <p className="login-error-p">Credenciales incorrectas</p>
+        </motion.div>
+      )}
       <input type="submit" className="login_form_button" />
     </motion.form>
   );
