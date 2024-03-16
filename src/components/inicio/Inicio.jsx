@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { DoubleLine } from "../charts/DoubleLine";
+import { dispositivoPorAnho } from "./objetsModels/dispositivoPorAnho.js";
 
-export const Inicio = ({axios}) => {
-
-  const [data, setData] = useState();
+export const Inicio = ({ axios, theme }) => {
+  const [dataDispositivosActual, setDataDispositivosActual] = useState(dispositivoPorAnho);
+  const [dataDispositivosAnhoAnterior, setDataDispositivosAnhoAnterior] = useState(dispositivoPorAnho);
 
   useEffect(() => {
     try {
@@ -14,10 +16,16 @@ export const Inicio = ({axios}) => {
   }, []);
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3000/api/v1/dispositivo/get/count/2024");
-    setData(response.data);
-  }
-
+    const responseDispositivosActual = await axios.get(
+      `http://localhost:3000/api/v1/dispositivo/get/count/${new Date().getFullYear()}`
+    );
+    const responseDispositivosAnhoAnterior = await axios.get(
+      `http://localhost:3000/api/v1/dispositivo/get/count/${new Date().getFullYear() - 1}`
+    );
+    setDataDispositivosActual(prevState => ({ ...prevState, ...responseDispositivosActual.data }));
+    setDataDispositivosAnhoAnterior(prevState => ({ ...prevState, ...responseDispositivosAnhoAnterior.data }));
+  };
+  
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -25,7 +33,7 @@ export const Inicio = ({axios}) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      <h1>Inicio</h1>
+      <DoubleLine bdData1={dataDispositivosActual} bdData2={dataDispositivosAnhoAnterior} theme={theme} />
     </motion.main>
   );
 };
