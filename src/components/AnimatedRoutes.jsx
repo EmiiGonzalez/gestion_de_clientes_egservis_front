@@ -10,7 +10,7 @@ import { Layout } from "./navBar/Layout";
 import { Login } from "./login/Login";
 import { Header } from "./header/Header";
 import { axiosInst } from "../service/RoutesHandler.js";
-import { useEffect, useState } from "react";
+import useTokenVerification from "../hooks/useTokenVerification.js";
 
 /*
   Rutas de la aplicacion
@@ -25,22 +25,9 @@ export const AnimatedRoutes = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isVerifying, setIsVerifying] = useState(false);
-
   const axios = axiosInst(setToken, token, navigate);
 
-  useEffect(() => {
-    if (!token.autorizado) {
-      navigate("/login");
-    }
-    if (
-      (token.autorizado && location.pathname == "/login") ||
-      location.pathname == "/register"
-    ) {
-      navigate("/");
-    }
-    setIsVerifying(true);
-  }, [token.autorizado, navigate]);
+  const isVerifying = useTokenVerification(token, navigate);
 
   if (!isVerifying) {
     return null;
@@ -65,7 +52,7 @@ export const AnimatedRoutes = ({
               path="/"
               element={<Layout setHandleTheme={setHandleTheme} theme={theme} />}
             >
-              <Route index element={<Inicio axios={axios} />} />
+              <Route index element={<Inicio axios={axios} theme={theme} />} />
               <Route path="clientes" element={<Clientes axios={axios} />} />
               <Route
                 path="dispositivos"
