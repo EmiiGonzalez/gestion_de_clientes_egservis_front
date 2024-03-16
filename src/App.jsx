@@ -5,15 +5,18 @@ import "./assets/css/body/animations.css";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AnimatedRoutes } from "./components/AnimatedRoutes";
+import { useEffect } from "react";
 
+const url = "http://localhost:3000/api/v1/";
 
 function App() {
   const [theme, setHandleTheme] = useLocalStorage("theme", "light");
   const [token, setToken] = useLocalStorage("token", {jwt : null,
   autorizado : false} );
-  const url = "http://localhost:3000/api/v1/";
 
-  document.querySelector("#root").className = theme;
+  useEffect(() => {
+    document.querySelector("#root").className = theme;
+  }, [theme]);
 
   return (
     <>
