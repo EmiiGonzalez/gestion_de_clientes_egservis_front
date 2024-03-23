@@ -12,7 +12,7 @@ const url = "http://localhost:3000/api/v1/";
 function App() {
   const [theme, setHandleTheme] = useLocalStorage("theme", "light");
   const [token, setToken] = useLocalStorage("token", {jwt : null,
-  autorizado : false} );
+  autorizado : false, accesRegister : false} );
 
   useEffect(() => {
     document.querySelector("#root").className = theme;

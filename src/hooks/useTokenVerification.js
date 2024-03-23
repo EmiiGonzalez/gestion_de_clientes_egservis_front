@@ -7,8 +7,16 @@ const [isVerifying, setIsVerifying] = useState(false);
     if (!token.autorizado) {
       navigate("/login");
     }
+    if (token.accesRegister){
+      navigate("/register");
+    }
+    if (token.autorizado ) {
+      if (location.pathname === "/register" || location.pathname === "/login") {
+        navigate("/");
+      }
+    }
     setIsVerifying(true);
-  }, [token.autorizado, navigate]);
+  }, [token.autorizado, token.accesRegister, navigate]);
 
   return isVerifying;
 };

@@ -138,6 +138,30 @@
     color: #FF0000 !important;
     font-size: 1.2rem;
 }
+.login_form_link {
+    text-decoration: none;
+    color: #ffffff; /* Azul claro y vibrante para el texto del enlace */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 10px 20px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #000000; /* Borde del mismo color que el texto */
+    background-color: #ab00bb; /* Fondo gris claro */
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login_form_link:hover {
+    color: #ab00bb; 
+    background-color: #0c1022; 
+    border-color: #ab00bb;
+    box-shadow: 0 0 10px #ab00bb;
+    transition: all 0.3s ease;
+}
 
 @keyframes updown {
     0% {

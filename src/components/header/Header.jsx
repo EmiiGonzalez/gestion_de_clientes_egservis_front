@@ -1,8 +1,9 @@
 import "../../assets/css/headerStyles/header.css";
-import { jwtDecode } from "jwt-decode";
+import { useUserInfo } from "../../hooks/useUserInfo";
 
-export const Header = () => {
-  const userInfo = jwtDecode(JSON.parse(localStorage.getItem("token")).jwt).sub;
+export const Header = ({ token }) => {
+
+  const  userInfo  = useUserInfo(token);
 
   return (
     <header className="header">

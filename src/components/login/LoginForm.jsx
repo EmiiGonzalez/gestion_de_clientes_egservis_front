@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export const LoginForm = ({ setToken, url }) => {
+export const LoginForm = ({ setToken, url, setIsVerifying }) => {
   const {
     register,
     handleSubmit,
@@ -28,7 +28,9 @@ export const LoginForm = ({ setToken, url }) => {
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${url}auth/login`, data);
-      setToken({ jwt: response.data.token, autorizado: true });
+      setToken({ jwt: response.data.token, autorizado: true , accesRegister: false});
+      setIsVerifying(true);
+      navigate("/");
     } catch (error) {
       if (error.response.status === 401) {
         setCredentialFail(true);

@@ -27,7 +27,7 @@ export const AnimatedRoutes = ({
   const navigate = useNavigate();
   const axios = axiosInst(setToken, token, navigate);
 
-  const isVerifying = useTokenVerification(token, navigate);
+  const isVerifying = useTokenVerification(token, navigate, location);
 
   if (!isVerifying) {
     return null;
@@ -36,7 +36,7 @@ export const AnimatedRoutes = ({
   return (
     <>
       {location.pathname !== "/login" && location.pathname !== "/register" && (
-        <Header />
+        <Header token={token} />
       )}
       <div
         className={

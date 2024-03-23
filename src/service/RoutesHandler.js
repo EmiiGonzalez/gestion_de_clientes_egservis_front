@@ -17,17 +17,17 @@ export const axiosInst = (setToken, token, navigate) => {
         retryCondition: (error) => {
 
           if (error.response?.status === 401) {
-            setToken(JSON.stringify({
+            setToken({
               jwt: null,
-              autorizado: false
-          }));
+              autorizado: false,
+              accesRegister: false
+          });
           navigate("/login");
-          }
-
           return error.response?.status === 401;
+          }
         },
       }, {
-        retries: 2
+        retries: 1
       });
 
     return axiosInstance;
